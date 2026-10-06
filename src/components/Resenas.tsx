@@ -42,7 +42,6 @@ export default function Resenas() {
 
         <Reveal className="mt-20 md:mt-28">
           <figure className="relative">
-            <span className="display pointer-events-none absolute -left-2 -top-20 text-[10rem] leading-none text-dorado/80 md:-left-10 md:-top-32 md:text-[16rem]" aria-hidden="true">“</span>
             <blockquote className="display relative max-w-5xl text-[clamp(2rem,4.6vw,4.8rem)] leading-[1.02] text-espresso" lang="en">
               {destacada.en}
             </blockquote>
