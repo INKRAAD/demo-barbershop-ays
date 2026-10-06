@@ -7,13 +7,5 @@ export default defineConfig({
   build: {
     target: 'es2022',
     chunkSizeWarningLimit: 1200,
-    rollupOptions: {
-      output: {
-        manualChunks(id: string) {
-          if (id.includes('node_modules/three') || id.includes('@react-three')) return 'three'
-          if (id.includes('node_modules/gsap') || id.includes('node_modules/lenis')) return 'motion-libs'
-        },
-      },
-    },
   },
 })
