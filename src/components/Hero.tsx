@@ -67,6 +67,7 @@ export default function Hero({ ready }: { ready: boolean }) {
         <img src="/brand/ays-logo.svg" alt="Logo de Barbershop A&S: maestro barbero de barba blanca y lentes, letras A y S, tijera y peine, 'Barbershop – Desde 1991'" className="hero-logo w-[min(80vw,46vh)] drop-shadow-[0_20px_60px_rgba(27,21,11,0.6)] md:w-[min(46vw,50vh)]" fetchPriority="high" />
       </div>
 
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-espresso via-espresso/85 to-transparent md:hidden" aria-hidden="true" />
       <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[1500px] flex-col gap-6 px-5 pb-8 md:flex-row md:items-end md:justify-between md:px-10 md:pb-12">
         <div className="hero-title">
           <p className="hero-fade kicker mb-4">{t(TXT.heroKicker)}</p>

@@ -10,7 +10,7 @@ void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }
 `
 const frag = /* glsl */ `
 precision highp float;
-uniform float uTime; uniform float uSet; uniform vec2 uRes; uniform vec2 uMouse; uniform float uHz;
+uniform float uTime; uniform float uSet; uniform vec2 uRes; uniform vec2 uMouse; uniform float uHz; uniform float uSunY;
 varying vec2 vUv;
 const vec3 ESP = vec3(0.106,0.082,0.043);
 const vec3 TAB = vec3(0.227,0.157,0.071);
@@ -26,7 +26,7 @@ void main(){
   vec2 uv = vUv; float aspect = uRes.x/uRes.y;
   vec2 p = vec2((uv.x-.5)*aspect, uv.y);
   float hz = uHz; float set = clamp(uSet,0.,1.);
-  vec2 sunPos = vec2(uMouse.x*0.05, hz + 0.25 - set*0.36 + uMouse.y*0.01);
+  vec2 sunPos = vec2(uMouse.x*0.05, hz + uSunY - set*(uSunY+0.11) + uMouse.y*0.01);
   float sunR = 0.09;
   vec3 col;
   float sunVis = smoothstep(hz-0.09, hz+0.06, sunPos.y);
@@ -77,11 +77,12 @@ function Sea({ setRef, reduced }: { setRef: MutableRefObject<number>; reduced: b
   const mouse = useRef(new THREE.Vector2())
   const mat = useMemo(() => new THREE.ShaderMaterial({
     vertexShader: vert, fragmentShader: frag, depthWrite: false, depthTest: false,
-    uniforms: { uTime: { value: 8 }, uSet: { value: 0 }, uRes: { value: new THREE.Vector2(1, 1) }, uMouse: { value: new THREE.Vector2() }, uHz: { value: 0.4 } },
+    uniforms: { uTime: { value: 8 }, uSet: { value: 0 }, uRes: { value: new THREE.Vector2(1, 1) }, uMouse: { value: new THREE.Vector2() }, uHz: { value: 0.4 }, uSunY: { value: 0.25 } },
   }), [])
   useEffect(() => {
     mat.uniforms.uRes.value.set(size.width, size.height)
     mat.uniforms.uHz.value = size.width < 768 ? 0.36 : 0.4
+    mat.uniforms.uSunY.value = size.width < 768 ? 0.385 : 0.25
     invalidate()
   }, [size, mat, invalidate])
   useEffect(() => {

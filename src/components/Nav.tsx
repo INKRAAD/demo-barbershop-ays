@@ -49,7 +49,7 @@ export default function Nav() {
             <button onClick={() => setLang(lang === 'es' ? 'en' : 'es')} className="rounded-full border border-hueso/30 px-3 py-2 font-mono text-[0.7rem] font-bold uppercase tracking-[0.2em] text-hueso/85 hover:border-dorado hover:text-dorado" aria-label={lang === 'es' ? 'View in English' : 'Ver en español'}>
               {lang === 'es' ? 'EN' : 'ES'}
             </button>
-            <Magnetic className="hidden md:inline-block">
+            <Magnetic className="max-[359px]:hidden">
               <a href={wa(lang)} target="_blank" rel="noopener" className="btn-primary !py-3" data-cursor="WhatsApp">
                 <WaIcon className="h-4 w-4" />{t(TXT.reservarCorto)}
               </a>

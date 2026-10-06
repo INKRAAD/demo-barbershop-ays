@@ -4,3 +4,7 @@ dist
 .env.*
 *.log
 .DS_Store
+screenshots/*-full.png
+scripts/logo-work/*.pbm
+scripts/logo-work/*-preview.png
+scripts/logo-work/__pycache__

@@ -9,7 +9,7 @@ const ANG = [-66, -22, 22, 66]
 
 function Dial({ active }: { active: number }) {
   return (
-    <svg viewBox="0 0 320 200" className="w-full max-w-[420px]" role="img" aria-label={`Indicador de piso: ${LLEGAR[active].piso}`}>
+    <svg viewBox="0 0 320 200" className="w-[min(52vw,220px)] lg:w-full lg:max-w-[420px]" role="img" aria-label={`Indicador de piso: ${LLEGAR[active].piso}`}>
       <defs>
         <radialGradient id="dialbg" cx="0.5" cy="0.9" r="0.9"><stop offset="0" stopColor="#3A2812" /><stop offset="1" stopColor="#1B150B" /></radialGradient>
       </defs>
@@ -57,12 +57,12 @@ export default function Llegar() {
         <SplitReveal as="h2" id="llegar-title" text={t(TXT.llegarTitle)} className="display block max-w-5xl text-[clamp(2.6rem,5.6vw,6.2rem)] text-hueso" />
 
         <div className="mt-20 grid gap-12 lg:grid-cols-2 lg:gap-24">
-          <div className="lg:sticky lg:top-[18vh] lg:h-[64vh]">
+          <div className="sticky top-16 z-10 -mx-5 bg-espresso/90 px-5 py-4 backdrop-blur-md lg:top-[18vh] lg:mx-0 lg:h-[64vh] lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
             <Dial active={active} />
-            <p className="mt-6 font-mono text-sm uppercase tracking-[0.2em] text-hueso/70" aria-live="polite">
+            <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-hueso/70 lg:mt-6 lg:text-sm" aria-live="polite">
               <span className="text-dorado">{LLEGAR[active].n}</span> · {t(LLEGAR[active].t)}
             </p>
-            <address className="mt-10 not-italic">
+            <address className="mt-10 hidden not-italic lg:block">
               <div className="display text-3xl text-hueso md:text-4xl">{BIZ.direccion}</div>
               <div className="mt-2 font-mono text-sm uppercase tracking-[0.18em] text-hueso/60">{BIZ.distrito}</div>
             </address>
@@ -78,6 +78,10 @@ export default function Llegar() {
                 <p className="mt-4 max-w-md text-lg leading-relaxed text-hueso/75">{t(s.p)}</p>
               </div>
             ))}
+            <address className="mt-10 not-italic lg:hidden">
+              <div className="display text-3xl text-hueso">{BIZ.direccion}</div>
+              <div className="mt-2 font-mono text-sm uppercase tracking-[0.18em] text-hueso/60">{BIZ.distrito}</div>
+            </address>
           </div>
         </div>
 
